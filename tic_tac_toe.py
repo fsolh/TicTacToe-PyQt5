@@ -148,6 +148,8 @@ class Ui_MainWindow(object):
                 }
     # selected tiles set
     selected_set = set()
+    # a vriable to check if the game is finished
+    game_over = False
     # defining a funtion to split the tile's name into 2-characters strings
     def split_by_two(line):
         n = 2
@@ -160,6 +162,7 @@ class Ui_MainWindow(object):
         possible_tiles = []
         for key, value in Ui_MainWindow.user_dict.items():
             if value == 3:
+                Ui_MainWindow.game_over = True
                 winner = "user"
                 return winner
             elif value == 2:
@@ -183,6 +186,7 @@ class Ui_MainWindow(object):
             # self.description.setText(f"{Ui_MainWindow.selected_set}")
             for key, value in Ui_MainWindow.sys_dict.items():
                 if value == 3:
+                    Ui_MainWindow.game_over = True
                     winner = "system"
                     return winner
             return winner
@@ -192,6 +196,7 @@ class Ui_MainWindow(object):
                     if safe in tile:
                         possible_tiles.append(tile)
             if len(possible_tiles)==0:
+                Ui_MainWindow.game_over = True
                 winner = "gameover"
                 return winner
             one_tile = random.choice(possible_tiles)
@@ -205,6 +210,7 @@ class Ui_MainWindow(object):
             # self.description.setText(f"{Ui_MainWindow.selected_set}")
             for key, value in Ui_MainWindow.sys_dict.items():
                 if value == 3:
+                    Ui_MainWindow.game_over = True
                     winner = "system"
                     return winner
             return winner
@@ -218,7 +224,7 @@ class Ui_MainWindow(object):
             self.description.setText("Game over! It's a tie!")
     
     def clicked_tile1(self, event):
-        if self.label_1.text() != "O" and self.label_1.text() != "X":
+        if self.label_1.text() != "O" and self.label_1.text() != "X" and not Ui_MainWindow.game_over:
             self.label_1.setText("O")
             Ui_MainWindow.selected_set.add("d1x1y1")
             Ui_MainWindow.user_dict["d1"] += 1
@@ -229,7 +235,7 @@ class Ui_MainWindow(object):
         
     
     def clicked_tile2(self, event):
-        if self.label_2.text() != "O" and self.label_2.text() != "X":
+        if self.label_2.text() != "O" and self.label_2.text() != "X" and not Ui_MainWindow.game_over:
             self.label_2.setText("O")
             Ui_MainWindow.selected_set.add("x1y2")
             Ui_MainWindow.user_dict["x1"] += 1
@@ -238,7 +244,7 @@ class Ui_MainWindow(object):
             self.check_winner(game)
 
     def clicked_tile3(self, event):
-        if self.label_3.text() != "O" and self.label_3.text() != "X":
+        if self.label_3.text() != "O" and self.label_3.text() != "X" and not Ui_MainWindow.game_over:
             self.label_3.setText("O")
             Ui_MainWindow.selected_set.add("d2x1y3")
             Ui_MainWindow.user_dict["d2"] += 1
@@ -248,7 +254,7 @@ class Ui_MainWindow(object):
             self.check_winner(game)
 
     def clicked_tile4(self, event):
-        if self.label_4.text() != "O" and self.label_4.text() != "X":
+        if self.label_4.text() != "O" and self.label_4.text() != "X" and not Ui_MainWindow.game_over:
             self.label_4.setText("O")
             Ui_MainWindow.selected_set.add("x2y1")
             Ui_MainWindow.user_dict["x2"] += 1
@@ -257,7 +263,7 @@ class Ui_MainWindow(object):
             self.check_winner(game)
     
     def clicked_tile5(self, event):
-        if self.label_5.text() != "O" and self.label_5.text() != "X":
+        if self.label_5.text() != "O" and self.label_5.text() != "X" and not Ui_MainWindow.game_over:
             self.label_5.setText("O")
             Ui_MainWindow.selected_set.add("d1d2x2y2")
             Ui_MainWindow.user_dict["d1"] += 1
@@ -268,7 +274,7 @@ class Ui_MainWindow(object):
             self.check_winner(game)
 
     def clicked_tile6(self, event):
-        if self.label_6.text() != "O" and self.label_6.text() != "X":
+        if self.label_6.text() != "O" and self.label_6.text() != "X" and not Ui_MainWindow.game_over:
             self.label_6.setText("O")
             Ui_MainWindow.selected_set.add("x2y3")
             Ui_MainWindow.user_dict["x2"] += 1
@@ -277,7 +283,7 @@ class Ui_MainWindow(object):
             self.check_winner(game)
 
     def clicked_tile7(self, event):
-        if self.label_7.text() != "O" and self.label_7.text() != "X":
+        if self.label_7.text() != "O" and self.label_7.text() != "X" and not Ui_MainWindow.game_over:
             self.label_7.setText("O")
             Ui_MainWindow.selected_set.add("d2x3y1")
             Ui_MainWindow.user_dict["d2"] += 1
@@ -287,7 +293,7 @@ class Ui_MainWindow(object):
             self.check_winner(game)
 
     def clicked_tile8(self, event):
-        if self.label_8.text() != "O" and self.label_8.text() != "X":
+        if self.label_8.text() != "O" and self.label_8.text() != "X" and not Ui_MainWindow.game_over:
             self.label_8.setText("O")
             Ui_MainWindow.selected_set.add("x3y2")
             Ui_MainWindow.user_dict["x3"] += 1
@@ -296,7 +302,7 @@ class Ui_MainWindow(object):
             self.check_winner(game)
 
     def clicked_tile9(self, event):
-        if self.label_9.text() != "O" and self.label_9.text() != "X":
+        if self.label_9.text() != "O" and self.label_9.text() != "X" and not Ui_MainWindow.game_over:
             self.label_9.setText("O")
             Ui_MainWindow.selected_set.add("d1x3y3")
             Ui_MainWindow.user_dict["d1"] += 1
@@ -317,6 +323,7 @@ class Ui_MainWindow(object):
             Ui_MainWindow.sys_dict[key] = 0
         Ui_MainWindow.selected_set.clear()
         self.description.setText('You are "O". It is your turn.')
+        Ui_MainWindow.game_over = False
         
 
     def retranslateUi(self, MainWindow):
