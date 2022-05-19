@@ -6,7 +6,7 @@ import random
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(565, 600)
+        MainWindow.resize(565, 680)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         font = QtGui.QFont()
@@ -93,6 +93,13 @@ class Ui_MainWindow(object):
         self.description.setAlignment(QtCore.Qt.AlignCenter)
         self.description.setObjectName("description")
         self.description.setFont(font)
+
+        #-------------------------------play again/refresh button------------------------------
+        self.refreshButton = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.refresh())
+        self.refreshButton.setGeometry(QtCore.QRect(235, 590, 100, 50))
+        self.refreshButton.setObjectName("refreshButton")
+        self.refreshButton.setText("Play Again")
+
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -202,6 +209,14 @@ class Ui_MainWindow(object):
                     return winner
             return winner
     
+    def check_winner(self, winner):
+        if winner == "user":
+            self.description.setText("You won!")
+        elif winner == "system":
+            self.description.setText("You lost!")
+        elif winner == "gameover":
+            self.description.setText("Game over! It's a tie!")
+    
     def clicked_tile1(self, event):
         if self.label_1.text() != "O" and self.label_1.text() != "X":
             self.label_1.setText("O")
@@ -210,12 +225,7 @@ class Ui_MainWindow(object):
             Ui_MainWindow.user_dict["x1"] += 1
             Ui_MainWindow.user_dict["y1"] += 1
             game = self.system_select()
-            if game == "user":
-                self.description.setText("You won!")
-            elif game == "system":
-                self.description.setText("You lost!")
-            elif game == "gameover":
-                self.description.setText("Game over! It's a tie!")
+            self.check_winner(game)
         
     
     def clicked_tile2(self, event):
@@ -225,12 +235,7 @@ class Ui_MainWindow(object):
             Ui_MainWindow.user_dict["x1"] += 1
             Ui_MainWindow.user_dict["y2"] += 1
             game = self.system_select()
-            if game == "user":
-                self.description.setText("You won!")
-            elif game == "system":
-                self.description.setText("You lost!")
-            elif game == "gameover":
-                self.description.setText("Game over! It's a tie!")
+            self.check_winner(game)
 
     def clicked_tile3(self, event):
         if self.label_3.text() != "O" and self.label_3.text() != "X":
@@ -240,12 +245,7 @@ class Ui_MainWindow(object):
             Ui_MainWindow.user_dict["x1"] += 1
             Ui_MainWindow.user_dict["y3"] += 1
             game = self.system_select()
-            if game == "user":
-                self.description.setText("You won!")
-            elif game == "system":
-                self.description.setText("You lost!")
-            elif game == "gameover":
-                self.description.setText("Game over! It's a tie!")
+            self.check_winner(game)
 
     def clicked_tile4(self, event):
         if self.label_4.text() != "O" and self.label_4.text() != "X":
@@ -254,12 +254,7 @@ class Ui_MainWindow(object):
             Ui_MainWindow.user_dict["x2"] += 1
             Ui_MainWindow.user_dict["y1"] += 1
             game = self.system_select()
-            if game == "user":
-                self.description.setText("You won!")
-            elif game == "system":
-                self.description.setText("You lost!")
-            elif game == "gameover":
-                self.description.setText("Game over! It's a tie!")
+            self.check_winner(game)
     
     def clicked_tile5(self, event):
         if self.label_5.text() != "O" and self.label_5.text() != "X":
@@ -270,12 +265,7 @@ class Ui_MainWindow(object):
             Ui_MainWindow.user_dict["x2"] += 1
             Ui_MainWindow.user_dict["y2"] += 1
             game = self.system_select()
-            if game == "user":
-                self.description.setText("You won!")
-            elif game == "system":
-                self.description.setText("You lost!")
-            elif game == "gameover":
-                self.description.setText("Game over! It's a tie!")
+            self.check_winner(game)
 
     def clicked_tile6(self, event):
         if self.label_6.text() != "O" and self.label_6.text() != "X":
@@ -284,12 +274,7 @@ class Ui_MainWindow(object):
             Ui_MainWindow.user_dict["x2"] += 1
             Ui_MainWindow.user_dict["y3"] += 1
             game = self.system_select()
-            if game == "user":
-                self.description.setText("You won!")
-            elif game == "system":
-                self.description.setText("You lost!")
-            elif game == "gameover":
-                self.description.setText("Game over! It's a tie!")
+            self.check_winner(game)
 
     def clicked_tile7(self, event):
         if self.label_7.text() != "O" and self.label_7.text() != "X":
@@ -299,12 +284,7 @@ class Ui_MainWindow(object):
             Ui_MainWindow.user_dict["x3"] += 1
             Ui_MainWindow.user_dict["y1"] += 1
             game = self.system_select()
-            if game == "user":
-                self.description.setText("You won!")
-            elif game == "system":
-                self.description.setText("You lost!")
-            elif game == "gameover":
-                self.description.setText("Game over! It's a tie!")
+            self.check_winner(game)
 
     def clicked_tile8(self, event):
         if self.label_8.text() != "O" and self.label_8.text() != "X":
@@ -313,12 +293,7 @@ class Ui_MainWindow(object):
             Ui_MainWindow.user_dict["x3"] += 1
             Ui_MainWindow.user_dict["y2"] += 1
             game = self.system_select()
-            if game == "user":
-                self.description.setText("You won!")
-            elif game == "system":
-                self.description.setText("You lost!")
-            elif game == "gameover":
-                self.description.setText("Game over! It's a tie!")
+            self.check_winner(game)
 
     def clicked_tile9(self, event):
         if self.label_9.text() != "O" and self.label_9.text() != "X":
@@ -328,12 +303,21 @@ class Ui_MainWindow(object):
             Ui_MainWindow.user_dict["x3"] += 1
             Ui_MainWindow.user_dict["y3"] += 1
             game = self.system_select()
-            if game == "user":
-                self.description.setText("You won!")
-            elif game == "system":
-                self.description.setText("You lost!")
-            elif game == "gameover":
-                self.description.setText("Game over! It's a tie!")
+            self.check_winner(game)
+    
+    # refresh funtion to play again
+    def refresh(self):
+        label_list = Ui_MainWindow.tiles_dict.values()
+        for l in label_list:
+            label = self.centralwidget.findChild(QtWidgets.QLabel, l)
+            label.setText("")
+        for key in Ui_MainWindow.user_dict.keys():
+            Ui_MainWindow.user_dict[key] = 0
+        for key in Ui_MainWindow.sys_dict.keys():
+            Ui_MainWindow.sys_dict[key] = 0
+        Ui_MainWindow.selected_set.clear()
+        self.description.setText('You are "O". It is your turn.')
+        
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
