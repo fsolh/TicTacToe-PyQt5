@@ -335,10 +335,10 @@ class Ui_MainWindow(object):
             elif game == "gameover":
                 self.description.setText("Game over! It's a tie!")
 
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Tic Tac Toe"))
+        MainWindow.setWindowIcon(QtGui.QIcon('icons/tic-tac-toe_39453.png'))
 
 
 if __name__ == "__main__":
